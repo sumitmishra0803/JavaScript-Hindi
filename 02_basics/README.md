@@ -1,1 +1,1 @@
-## Here, we learned about **<h2>arrays and objects</h2>**
+## Here, I learned about **<h2>arrays and objects</h2>**
