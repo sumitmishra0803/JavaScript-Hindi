@@ -1,2 +1,2 @@
-# JS-Hindi
-Learning JavaScript from Chai Aur Code YT Channel
+# JavaScript-Hindi
+Learning *JavaScript* from **Chai Aur Code** YT Channel
