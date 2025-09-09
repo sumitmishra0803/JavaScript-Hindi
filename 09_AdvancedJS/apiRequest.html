@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request</title>
+    <style>
+        .card {
+            /* Add shadows to create the "card" effect */
+            width: 500px;
+            height: 600px;
+            background-color: #cdefff;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            margin: auto;
+        }
+        img{
+            padding: 10px 150px;
+            border-radius: 5px;
+        }
+        .container {
+             padding: 2px 16px;
+        }
+    </style>
+</head>
+<body style="background-color: #212121;">
+    <!-- 0	UNSENT	Client has been created. open() not called yet.
+    1	OPENED	open() has been called.
+    2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+    3	LOADING	Downloading; responseText holds partial data.
+    4	DONE	The operation is complete. -->
+
+    <div class="card">
+        <img src="" alt="Avatar" style="width:200px">
+        <div class="container">
+          <h4>Sumit</h4>
+          <p>Student</p>
+        </div>
+    </div>
+</body>
+<script>
+    const requestURL = 'https://api.github.com/users/sumitmishra0803'
+    const xhr = new XMLHttpRequest();  //obj of class
+    xhr.open('GET', requestURL)
+
+    xhr.onreadystatechange = function(){
+        console.log(xhr.readyState);
+        if(xhr.readyState === 4){
+            let data = JSON.parse(this.responseText) //typecast in JSON for better understanding
+            console.log(data)
+            console.log(typeof data);
+            console.log(data.followers);
+// *************************************************
+            // card ke liye JS
+            document.querySelector(".card img").setAttribute("src", `${data.avatar_url}`);
+            document.querySelector("h4").innerHTML = `${data.name} , Followers : ${data.followers}`;
+            document.querySelector("h4").style.fontWeight = `bold`;
+            document.querySelector("p").innerHTML = `${data.bio}  ${data.blog}`
+        }
+    }
+    xhr.send();
+</script>
+</html>
